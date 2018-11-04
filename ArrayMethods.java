@@ -50,6 +50,25 @@ public class ArrayMethods{
     return aryReturn;
   }
   //
+  public static int longestRow(int[][] ary) {
+    //returns longest row, so we know how long to make aryReturn for below methods
+    int longest = 0;
+    for (int i = 0; i<ary.length; i++) {
+      if (ary[i].length > longest) {
+        longest = ary[i].length;
+      }
+    }
+    return longest;
+  }
+  //
+  public static int[] allColSums(int[][] ary) {
+    int[] aryReturn = new int[longestRow(ary)];
+    for (int i = 0; i<longestRow(ary); i++) {
+      aryReturn[i] = columnSum(ary, i);
+    }
+    return aryReturn;
+  }
+  //
   //MAIN
   //
   public static void main(String[] args) {
@@ -67,7 +86,10 @@ public class ArrayMethods{
     System.out.println("This is what ary2 looks like: " + toString(ary2));
     System.out.println("Can we still add these rows? (expect 8, 13, 9, 8): " + columnSum(ary2, 0) + ", " + columnSum(ary2, 1) + ", " + columnSum(ary2, 2) + ", " + columnSum(ary2, 3));
     //testing allRowSums
-    System.out.println("--ALL--ROW--SUM--");
+    System.out.println("--ALL--ROW--SUMS--");
     System.out.println("This is the sum of the rows of ary1, in one array (expect {10, 20,16}): " + toString(allRowSums(ary1)));
+    //testing allColSums
+    System.out.println("--ALL-COL--SUMS--");
+    System.out.println("This is the sum of the rows of ary1, in one array (expect {4, 9, 14, 19}): " + toString(allColSums(ary1)));
   }
 }
