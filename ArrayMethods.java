@@ -21,7 +21,7 @@ public class ArrayMethods{
     return res+"}";
   }
   //
-  //
+  //now my code
   //
   public static int rowSum(int[][] ary, int x) {
     //returns the sum of the elements in row x of the ary
@@ -80,6 +80,17 @@ public class ArrayMethods{
     return true;
   }
   //
+  public static boolean isColumnMagic (int[][] ary) {
+    int[] columnSum = allColSums(ary);
+    int magicSum = columnSum[0];
+    for (int i =0; i<columnSum.length; i++) {
+      if (columnSum[i] != magicSum) {
+        return false;
+      }
+    }
+    return true;
+  }
+  /*/
   //MAIN
   //
   public static void main(String[] args) {
@@ -101,7 +112,7 @@ public class ArrayMethods{
     System.out.println("This is the sum of the rows of ary1, in one array (expect {10, 20,16}): " + toString(allRowSums(ary1)));
     //testing allColSums
     System.out.println("--ALL-COL--SUMS--");
-    System.out.println("This is the sum of the rows of ary1, in one array (expect {4, 9, 14, 19}): " + toString(allColSums(ary1)));
+    System.out.println("This is the sum of the columns of ary1, in one array (expect {4, 9, 14, 19}): " + toString(allColSums(ary1)));
     //testing isRowMagic
     int[][] ary3 = {{1, 2, 3, 4}, //has rowMagic
                     {4, 3, 2, 1},
@@ -110,5 +121,14 @@ public class ArrayMethods{
     System.out.println("allRowSums of ary3?(expect {10, 10, 10}): " + toString(allRowSums(ary3)));
     System.out.println("Does ary3 have rowMagic?: " + isRowMagic(ary3));
     System.out.println("Does ary2 and ary1 have rowMagic?: " + isRowMagic(ary2) + ", " + isRowMagic(ary1));
+    //Testing isColumnMagic
+    int[][] ary4 = {{1, 2, 3, 4},
+                    {2, 1, 4, 3},
+                    {4, 4}};
+    System.out.println("Made ary4, which should have columnMagic: " + toString(ary4));
+    System.out.println("allColSums of ary4?(expect {7, 7, 7, 7}): " + toString(allColSums(ary4)));
+    System.out.println("Does this have colMagic?: " + isColumnMagic(ary4));
+    System.out.println("Do ary1, 2 or 3 have colMagic? (no): " + isColumnMagic(ary1) + ", " + isColumnMagic(ary2) + ", " + isColumnMagic(ary3));
   }
+  /*/
 }
