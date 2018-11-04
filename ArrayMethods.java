@@ -69,6 +69,17 @@ public class ArrayMethods{
     return aryReturn;
   }
   //
+  public static boolean isRowMagic(int[][] ary) {
+    int[] rowSum = allRowSums(ary);
+    int magicSum = rowSum[0];
+    for (int i = 0; i<rowSum.length; i++) {
+      if (rowSum[i] != magicSum) {
+        return false;
+      }
+    }
+    return true;
+  }
+  //
   //MAIN
   //
   public static void main(String[] args) {
@@ -91,5 +102,13 @@ public class ArrayMethods{
     //testing allColSums
     System.out.println("--ALL-COL--SUMS--");
     System.out.println("This is the sum of the rows of ary1, in one array (expect {4, 9, 14, 19}): " + toString(allColSums(ary1)));
+    //testing isRowMagic
+    int[][] ary3 = {{1, 2, 3, 4}, //has rowMagic
+                    {4, 3, 2, 1},
+                    {2, 3, 4, 1}};
+    System.out.println("Made ary3, which should have isRowMagic: " + toString(ary3));
+    System.out.println("allRowSums of ary3?(expect {10, 10, 10}): " + toString(allRowSums(ary3)));
+    System.out.println("Does ary3 have rowMagic?: " + isRowMagic(ary3));
+    System.out.println("Does ary2 and ary1 have rowMagic?: " + isRowMagic(ary2) + ", " + isRowMagic(ary1));
   }
 }
